@@ -11,14 +11,14 @@ class TestPlayer(unittest.TestCase):
         """Test get_members_of - error while fetching - return empty list"""
         _fetch_members_of_mock.return_value = []
         players = get_members_of("league-id", "session-id")
-        self.assertEqual(players, [])
+        self.assertEqual([], players)
 
     @patch('src.player._fetch_members_of')
     def test_get_members_of__success__return_list_of_players(self, _fetch_members_of_mock: Mock):
         """Test get_members_of - success - return list of players"""
         _fetch_members_of_mock.return_value = fetched_members
         players = get_members_of("league-id", "session-id")
-        self.assertEqual(players, expected_players)
+        self.assertEqual(expected_players, players)
 
 
 expected_players = [

@@ -9,12 +9,12 @@ class TestStatus(unittest.TestCase):
     def test_new_from__valid_value__return_instance_of_status(self):
         """Test new_from - value exists in Enum - return instance of Status"""
         status = Status.new_from("NOT_STARTED")
-        self.assertEqual(status, Status.NOT_STARTED)
+        self.assertEqual(Status.NOT_STARTED, status)
 
     def test_new_from__invalid__return_none(self):
         """Test new_from - value exists in Enum - return None"""
         status = Status.new_from("DOES_NOT_EXIST")
-        self.assertEqual(status, None)
+        self.assertEqual(None, status)
 
 
 class TestRound(unittest.TestCase):
@@ -24,14 +24,14 @@ class TestRound(unittest.TestCase):
         """Test get_rounds_of - error while fetching - return empty list"""
         _fetch_rounds_of_mock.return_value = []
         rounds = get_rounds_of("league-id", "session-id")
-        self.assertEqual(rounds, [])
+        self.assertEqual([], rounds)
 
     @patch('src.round._fetch_rounds_of')
     def test_get_members_of__success__return_list_of_players(self, _fetch_rounds_of_mock: Mock):
         """Test get_rounds_of - success - return list of rounds"""
         _fetch_rounds_of_mock.return_value = fetched_rounds
         rounds = get_rounds_of("league-id", "session-id")
-        self.assertEqual(rounds, expected_rounds)
+        self.assertEqual(expected_rounds, rounds)
 
 
 expected_rounds = [
