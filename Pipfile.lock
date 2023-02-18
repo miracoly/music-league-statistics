@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ff88c6939e3090788e917cfdecf1af872168b83c8803457853061495493b5a71"
+            "sha256": "6f849f5396443687ab6eb06141eac17b28a4b5d54138be97fd1f8204468533ac"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -117,6 +117,22 @@
             ],
             "version": "==3.0.1"
         },
+        "dacite": {
+            "hashes": [
+                "sha256:6257a5e505b61a8cafee7ef3ad08cf32ee9b885718f42395d017e0a9b4c6af65",
+                "sha256:f7b1205cc5d9b62835aac8cbc1e6e37c1da862359a401f1edbe2ae08fbdc6193"
+            ],
+            "index": "pypi",
+            "version": "==1.8.0"
+        },
+        "dill": {
+            "hashes": [
+                "sha256:a07ffd2351b8c678dfc4a856a3005f8067aea51d6ba6c700796a4d9e280f39f0",
+                "sha256:e5db55f3687856d8fbdab002ed78544e1c4559a130302693d839dfe8f93f2373"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==0.3.6"
+        },
         "idna": {
             "hashes": [
                 "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4",
@@ -125,6 +141,14 @@
             "markers": "python_version >= '3.5'",
             "version": "==3.4"
         },
+        "pyfunctional": {
+            "hashes": [
+                "sha256:11c313fe251b269c6506689135456a05bc5a6fa129c9d02b445f383d4f411e10",
+                "sha256:50f11ea3c386c4330c7a8be92c0736b4b6a5924bdbd00b8b93f93b0c7fe6f2b3"
+            ],
+            "index": "pypi",
+            "version": "==1.4.3"
+        },
         "requests": {
             "hashes": [
                 "sha256:64299f4909223da747622c030b781c0d7811e359c37124b4bd368fb8c6518baa",
@@ -132,6 +156,14 @@
             ],
             "index": "pypi",
             "version": "==2.28.2"
+        },
+        "tabulate": {
+            "hashes": [
+                "sha256:0095b12bf5966de529c0feb1fa08671671b3368eec77d7ef7ab114be2c068b3c",
+                "sha256:024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==0.9.0"
         },
         "urllib3": {
             "hashes": [
