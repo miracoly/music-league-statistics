@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from typing import Tuple, List, Callable
 from functional import seq
 
-from src.player import Player
-from src.round import Round
+from src.player import Player, get_members_of
+from src.round import Round, get_rounds_of, Status
 from src.result import get_submissions_of
 from src.tracks import Track, get_tracks_of
 
@@ -14,6 +14,15 @@ class RoundStatistic:
     round_name: str
     artist: str
     track: str
+
+
+def get_statistic_of_league(league_id: str, session_id: str) -> List[RoundStatistic]:
+    rounds = get_rounds_of(league_id, session_id)
+    members = get_members_of(league_id, session_id)
+    return seq(rounds) \
+        .filter(lambda r: r.status == Status.COMPLETE) \
+        .flat_map(lambda r: get_statistic_of_round(r, members, session_id)) \
+        .list()
 
 
 def get_statistic_of_round(r: Round, members: List[Player], session_id: str) -> List[RoundStatistic]:
@@ -38,9 +47,10 @@ def get_statistic_of_round(r: Round, members: List[Player], session_id: str) -> 
 def _to_statistic(round_name: str) -> Callable[[Tuple[Track, str]], List[RoundStatistic]]:
     def f(track_player: Tuple[Track, str]) -> List[RoundStatistic]:
         track, player_name = track_player
-        return [RoundStatistic(player_name, round_name, track.artists[0].name, track.name)]
+        return seq(track.artists) \
+            .map(lambda artist: RoundStatistic(player_name, round_name, artist.name, track.name)) \
+            .list()
     return f
-
 
 
 def write_to_csv(rounds: List[RoundStatistic], out_file_name="statistics.csv"):
