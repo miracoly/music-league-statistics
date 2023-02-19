@@ -64,7 +64,7 @@ class Album:
 
 @dataclass
 class Track:
-    id: str
+    spotify_id: str
     name: str
     artists: List[Artist]
     album: Album
