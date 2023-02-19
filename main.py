@@ -4,7 +4,7 @@ from tap import Tap
 from src.console import print_lvl_1, print_lvl_2, print_lvl_3
 from src.league import get_leagues_of
 from src.player import get_me
-from src.statistics import write_to_csv, get_statistic_of_league
+from src.statistic import write_to_csv, get_statistic_of_league
 
 
 class SimpleArgumentParser(Tap):
