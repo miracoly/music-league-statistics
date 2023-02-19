@@ -29,12 +29,18 @@ def get_statistic_of_round(r: Round, members: List[Player], session_id: str) -> 
         .map(lambda player: player.name) \
         .list()
 
-    to_statistic: Callable[[Tuple[Track, str]], RoundStatistic] = lambda t: RoundStatistic(t[1], r.name, t[0].artists[0].name, t[0].name)
-
     return seq(get_tracks_of(track_ids, session_id)) \
         .zip(player_names) \
-        .map(to_statistic) \
+        .flat_map(_to_statistic(r.name)) \
         .list()
+
+
+def _to_statistic(round_name: str) -> Callable[[Tuple[Track, str]], List[RoundStatistic]]:
+    def f(track_player: Tuple[Track, str]) -> List[RoundStatistic]:
+        track, player_name = track_player
+        return [RoundStatistic(player_name, round_name, track.artists[0].name, track.name)]
+    return f
+
 
 
 def write_to_csv(rounds: List[RoundStatistic], out_file_name="statistics.csv"):
