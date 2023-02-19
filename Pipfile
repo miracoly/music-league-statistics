@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
-dacite = "*"
+requests = "~=2.28"
+dacite = "~=1.8"
 pyfunctional = "~=1.4"
-parameterized = "*"
 typed-argument-parser = "~=1.7"
 tqdm = "~=4.64"
 
 [dev-packages]
+parameterized = "~=0.8"
 
 [requires]
 python_version = "3.11"
