@@ -1,9 +1,9 @@
 import logging
-import requests
-
 from dataclasses import dataclass
-from dacite import from_dict
 from typing import List, Dict, Optional, TypeVar, Type
+
+import requests
+from dacite import from_dict
 from functional import seq
 from requests import RequestException
 
@@ -39,6 +39,7 @@ class _MeDto:
     name: str
     stats: Dict
 
+
 @dataclass
 class Me:
     id: str
@@ -60,7 +61,7 @@ def get_members_of(league_id: str, session_id: str) -> List[Player]:
     json = _fetch_members_of(league_id, session_id)
     return seq(json) \
         .map(lambda entry: from_dict(_PlayerDto, entry)) \
-        .map(lambda dto: Player(dto.user.id, dto.user.name))\
+        .map(lambda dto: Player(dto.user.id, dto.user.name)) \
         .list()
 
 

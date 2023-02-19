@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 from typing import Tuple, List, Callable
+
 from functional import seq
 
-from src.player import Player, get_members_of
-from src.round import Round, get_rounds_of, Status
+from src.league import get_leagues_of
+from src.player import Player, get_members_of, get_me
 from src.result import get_submissions_of
+from src.round import Round, get_rounds_of, Status
 from src.tracks import Track, get_tracks_of
 
 
@@ -14,6 +16,14 @@ class RoundStatistic:
     round_name: str
     artist: str
     track: str
+
+
+def get_statistic_of_all_leagues(session_id: str) -> List[RoundStatistic]:
+    me = get_me(session_id)
+    leagues = get_leagues_of(me.id, session_id)
+    return seq(leagues) \
+        .flat_map(lambda league: get_statistic_of_league(league.id, session_id)) \
+        .list()
 
 
 def get_statistic_of_league(league_id: str, session_id: str) -> List[RoundStatistic]:
