@@ -12,6 +12,11 @@ https://musicleague.com/[MusicLeague] is an awesome online game where you submit
 
 *Guess Who:* After some normal rounds our group decided to play league where we have to guess, who submitted the song. This script helps to get a better profile about each player and helps decide, who might submit which song.
 
+=== Result
+The result is a table of all submitted songs per round and league by player.
+
+image::doc/result.png[]
+
 == Installation
 This script requires Python 3.11+ and uses https://pipenv.pypa.io/en/latest/install/#installing-pipenv[pipenv] to manage dependencies.
 
