@@ -1,3 +1,5 @@
+WARNING: The Music-League API is no longer public. Therefore, `music-league-statistics` is no longer functional and has been archived as a result.
+
 = Music League Statistics
 :toc: macro
 
